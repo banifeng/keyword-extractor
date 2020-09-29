@@ -18,7 +18,7 @@ IDF："逆文档频率"（Inverse Document Frequency，缩写为IDF）。
 #### TextRank算法
 起源自大名鼎鼎的PageRank，佩奇排名本质上是一种以网页之间的超链接个数和质量作为主要因素粗略地分析网页的重要性的算法。基本的思想是一个网页被指向的越多，则其越重要。
 
-![image-20200602215259484](/Users/banifeng/Library/Application Support/typora-user-images/image-20200602215259484.png)
+![image-20200602215259484](./picture/textrank.png)
 
 其中d是阻尼系数，一般设置为0.85，便于快速收敛。
 
@@ -26,7 +26,7 @@ IDF："逆文档频率"（Inverse Document Frequency，缩写为IDF）。
 
 TextRank是PageRank在文本中的改进，算法如下图：
 
-![image-20200602215803653](/Users/banifeng/Library/Application Support/typora-user-images/image-20200602215803653.png)
+![image-20200602215803653](./picture/cal.png)
 
 TextRank节点变成了每个单词，边是窗口内的词的共现关系。
 
@@ -82,9 +82,12 @@ TN：真阴性，不是关键词且模型预测不是关键词
 FN：假阴性，是关键词但是模型没有预测出来
 
 通过以下的公式来计算 F1 得分
+
 $P=\frac{TP}{TP+FP}$
+
 $R=\frac{TP}{TP+FN}$
-$F_{1}=\frac{2 * P R}{P+R}$
+
+$F_{1}=\frac{2 * P * R}{P+R}$
 
 同时，在评价的过程中，会限制一下关键词的数量。即取抽取出的关键词的 Top K 进行计算，
 在这里，K 一般取 1、3、5 等，以适应不同下游任务的需要。
@@ -106,9 +109,7 @@ $F_{1}=\frac{2 * P R}{P+R}$
 
 ### 参考文献
 [1] Sun S , Xiong C , Liu Z , et al. Joint Keyphrase Chunking and Salience Ranking with BERT[J]. 2020. 
+
 [2] Devlin  J,  Chang  M  W,  Lee  K,  et  al.  Bert:  Pre-training  of  deep  bidirectional transformers for language understanding[J]. arXiv preprint arXiv:1810.04805, 2018: 1-16.
+
 [3] Rui Meng, Sanqiang Zhao, Shuguang Han, Daqing He, Peter Brusilovsky, and Yu Chi. 2017. Deep keyphrase generation. In Proceedings of ACL, pages 582–592.
-
-
-
-
